@@ -1,0 +1,39 @@
+@import "../sass/abstracts/variables";
+
+.container {
+  background-color: #fff;
+  border-radius: $border-radius;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 70vh;
+  
+  .wrapper {
+    img {
+      margin-bottom: 2em;
+      width: 30%;
+    }
+
+    h2 {
+      color: #3A4374;
+      margin-bottom: 0.5em;
+    }
+
+    p {
+      margin-bottom: 2.5em;
+    }
+    
+    a {
+      color: #fff;
+      background-color: #AD1FEA;
+      padding: .7em 1.5em;
+      border-radius: 0.625rem;
+      font-weight: 500;
+
+      &:hover {
+        background-color: #C75AF6;
+      }
+    }
+  }
+}

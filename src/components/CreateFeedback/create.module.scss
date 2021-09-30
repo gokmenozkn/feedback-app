@@ -1,0 +1,127 @@
+$radius: 0.25rem;
+$primary: #F7F8FD;
+$cancelbtn: #3A4374;
+$bordercolor: #4661E6;
+$btn-radius: 0.625rem;
+$add-btn: #AD1FEA;
+$add-btn-hover: #C75AF6;
+$cancel-btn-hover: #656EA3;
+
+select > option {
+  padding: 4em;
+}
+
+.form_container {
+  max-width: 550px;
+  margin: 0 auto;
+  
+  a {
+    color: #3A4374;
+    text-decoration: none;
+    font-weight: bold;
+    line-height: 70px;
+    img {
+      margin-right: 1em;
+    }
+  }
+  .form {
+    position: relative;
+    background-color: #fff;
+    color: #3A4374;
+    padding: 2.5em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    border-radius: 0.5rem;
+    box-shadow: 1px 1px 10px rgb(151, 141, 141);
+    margin-top: 1em;
+
+    .add_icon {
+      height: 56px;
+      width: 56px;
+      position: absolute;
+      top: 0;
+      transform: translateY(-50%);
+    }
+
+    &__group {
+      textarea {
+        appearance: none;
+        resize: none;
+      }
+      &__input {
+        width: 100%;
+        border: 2px solid $primary;
+        border-radius: $radius;
+        background-color: $primary;
+        padding: 1em;
+        appearance: none;
+        transition: border 0.3s ease;
+
+        &:focus {
+          border-color: $bordercolor;
+          border-width: 2px;
+          outline: none;
+        }
+      }
+
+      &__selection {
+        width: 100%;
+        padding: 1em;
+        border: 2px solid $primary;
+        appearance: none;
+        border-radius: $radius;
+        background-color: $primary;
+        outline: none;
+
+        &:focus {
+          border-color: $bordercolor;
+          border-width: 2px;
+          outline: none;
+        }
+      }
+      .select_wrapper {
+        position: relative;
+        .dropdown {
+          position: absolute;
+          right: 10px;
+          top: 45%;
+        }
+      }
+      &__title {
+        h5 {
+          margin-bottom: 0.3em;
+        }
+        p {
+          margin-bottom: 0.8em;
+          font-size: 14px;
+          color: #647196;
+        }
+      }
+    }
+
+    &__buttons {
+      button {
+        border: none;
+        padding: 1em 1.5em;
+        color: #fff;
+        font-weight: bold;
+        border-radius: $btn-radius;
+        cursor: pointer;
+      }
+      .right {
+        float: right;
+        .cancel {
+          background-color: $cancelbtn;
+          &:hover { background-color: $cancel-btn-hover; }
+        }
+        .add {
+          background-color: $add-btn;
+          margin-left: 1em;
+          &:hover { background-color: $add-btn-hover; }
+        }
+      }
+
+    }
+  }
+}

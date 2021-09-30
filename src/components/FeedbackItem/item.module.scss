@@ -1,0 +1,84 @@
+@import "../sass/components/label";
+@import "../sass/abstracts/variables";
+
+.feedback {
+  background-color: #fff;
+  border-radius: 0.625rem;
+  padding: 2em 1.5em;
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__left {
+      display: flex;
+      gap: 2em;
+      align-items: flex-start;
+
+      .vote {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        // background-color: #F2F4FF;
+        padding: 0.5em 0.7em;
+        border-radius: 0.625rem;
+        cursor: pointer;
+        .number {
+          font-size: 0.813rem;
+        }
+      }
+      .solution {
+        a {
+          color: #3A4374;
+          font-size: 1.125rem;
+          margin-bottom: 0.5em;
+          font-weight: 700;
+          display: block;
+          width: fit-content;
+
+          &:hover {
+            color: $blue-darken;
+          }
+        }
+        p { color: #647196; margin-bottom: 0.8em; }
+        .label {
+          @extend %label;
+        }
+      }
+    }
+
+    &__right {
+      display: flex;
+      gap: 1em;
+      align-items: center;
+
+      .comment_icon { color: #CDD2EE; }
+      .comment_number {
+        h5 {
+          font-size: 1rem;
+          color: #3A4374;
+        }
+      }
+    }
+  }
+}
+
+.active {
+  color: #fff;
+  background-color: #4661E6;
+  .arrow {
+    color: #fff;
+  }
+}
+
+.bg_light {
+  background-color: #F2F4FF;
+  color: #3A4374;
+  &:hover {
+    background-color: #CFD7FF;
+  }
+  .arrow {
+    color: #4661E6;
+  }
+}

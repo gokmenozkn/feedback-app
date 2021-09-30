@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import Home from "./pages/Home";
+import NewFeedback from "./pages/NewFeedback";
+import EditFeedback from "./pages/EditFeedback";
+import RoadmapPage from "./pages/RoadmapPage";
+import FeedbackDetail from "./pages/Feedbackdetail";
+
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/new-feedback" component={NewFeedback} />
+        <Route path="/edit-feedback/:id" component={EditFeedback} />
+        <Route path="/roadmap" component={RoadmapPage} />
+        <Route path="/feedback/:id" component={FeedbackDetail} />
+      </Switch>
+    </Router>
   );
 }
 

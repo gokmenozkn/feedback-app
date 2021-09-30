@@ -1,0 +1,56 @@
+@import "../../sass/components/label";
+@import "../../sass/abstracts/variables";
+
+@mixin borderColor($color) {
+  border-top-color: $color;
+}
+
+.card {
+  background-color: #fff;
+  padding: 2em;
+  border-radius: $border-radius;
+  display: grid;
+  grid-template-rows: auto;
+  grid-gap: 0.7em;
+  border-top-width: 0.4em;
+  border-top-style: solid;
+
+  &__status {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+
+    &__circle {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+  }
+  &__label {
+    @extend %label;
+    width: fit-content;
+  }
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__upvote {
+      display: flex;
+      align-items: center;
+      background-color: $btn-background-primary;
+      gap: 0.3em;
+      padding: 0.7em 1em;
+      border-radius: $border-radius;
+    }
+
+    &__qty {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      border-radius: $border-radius;
+
+      h5 {font-size: 1rem;}
+    }
+  }
+}

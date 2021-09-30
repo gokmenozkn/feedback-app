@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@100;200;400;500;600;700&display=swap');
+
+$jost: 'Jost', sans-serif;
+$body-color: #F7F8FD;
+
+*,
+::before,
+::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $jost;
+  background-color: $body-color;
+}

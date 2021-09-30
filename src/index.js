@@ -1,14 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+/* eslint-disable */
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import "./index.scss";
+import reportWebVitals from "./reportWebVitals";
+import FeedbackProvider from "./context/FeedbackContext";
+import FilterContextProvider from "./context/FilterContext";
+import UpvoteContextProvider from "./context/UpvoteContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <FeedbackProvider>
+      <FilterContextProvider>
+        <UpvoteContextProvider>
+          <App />
+        </UpvoteContextProvider>
+      </FilterContextProvider>
+    </FeedbackProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

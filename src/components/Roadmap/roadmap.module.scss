@@ -1,0 +1,122 @@
+@import "../sass/components/label";
+@import "../sass/abstracts/variables";
+
+@mixin borderColor($color) {
+  border-top-color: $color;
+}
+
+.container {
+  @media (min-width: 1025px) and (max-width: 1280px) {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 1em 0;
+  }
+
+  @media (min-width: 1281px) {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1em 0;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+p {
+  color: #647196;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-gap: 2em;
+
+  .col {
+    h4 {color: #3A4374; font-size: 1.125rem;}
+
+    .title {
+      padding: 2em 0;
+      h4 {margin-bottom: 0.3em;}
+    }
+  }
+}
+
+.cards {
+  display: grid;
+  grid-gap: 2em;
+  .card {
+    background-color: #fff;
+    padding: 2em;
+    border-radius: $border-radius;
+    display: grid;
+    grid-template-rows: auto;
+    grid-gap: 0.7em;
+    border-top-width: 0.4em;
+    border-top-style: solid;
+
+    &__status {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+
+      &__circle {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
+    }
+    &__label {
+      @extend %label;
+      width: fit-content;
+    }
+    &__bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &__upvote {
+        display: flex;
+        align-items: center;
+        background-color: $btn-background-primary;
+        gap: 0.3em;
+        padding: 0.7em 1em;
+        border-radius: $border-radius;
+      }
+
+      &__qty {
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+        border-radius: $border-radius;
+
+        h5 {font-size: 1rem;}
+      }
+    }
+  }
+}
+
+.orange {
+  background-color: #F49F85;
+}
+
+.purple {
+  background-color: #AD1FEA;
+}
+
+.blue {
+  background-color: $blue;
+}
+
+#purple {
+  @include borderColor($border-color-purple);
+}
+
+#red {
+  @include borderColor($border-color-primary);
+}
+
+#blue {
+  @include borderColor($blue);
+}
