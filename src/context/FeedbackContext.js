@@ -1,4 +1,5 @@
-import { useState, createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
+// import { useState, createContext, useContext, useReducer } from "react";
 import feedbackData from "../data/data.json";
 import feedbackReducer from "./reducers/feedbackreducer";
 
@@ -57,14 +58,24 @@ function FeedbackProvider({ children }) {
       type: "UPVOTE",
       payload: id,
     });
+    console.log(state.upvotedItems);
+  }
+
+  function unvote(id) {
+    dispatch({
+      type: "UNVOTE",
+      payload: id,
+    });
   }
 
   const value = {
+    state,
     feedbacks: state.feedbacks,
     // setFeedbacks,
     newFeedback,
     updateFeedback,
     upvote,
+    unvote,
   };
 
   return (

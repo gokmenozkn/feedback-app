@@ -3,7 +3,7 @@ import { faChevronUp, faComment } from "@fortawesome/free-solid-svg-icons";
 import item from "./item.module.scss";
 import { Link } from "react-router-dom";
 import { useFeedbackContext } from "../../context/FeedbackContext";
-import { useUpvoteContext } from "../../context/UpvoteContext";
+// import { useUpvoteContext } from "../../context/UpvoteContext";
 
 function FeedbackItem({ data }) {
   const {
@@ -17,17 +17,22 @@ function FeedbackItem({ data }) {
   const changedCategory =
     category.slice(0, 1).toUpperCase() + category.slice(1);
 
-  const { upvotedItems } = useUpvoteContext();
-  const { upvote } = useFeedbackContext();
+  // const { upvotedItems } = useUpvoteContext();
+  const { upvote, state, unvote } = useFeedbackContext();
 
   function handleClick(id) {
-    let found = upvotedItems.find((item) => item.id === id);
-    if (found) return;
-    upvote(id);
+    let found = state.upvotedItems.find((item) => item.id === id);
+    // let found = upvotedItems.find((item) => item.id === id);
+    if (found) {
+      unvote(id);
+    } else {
+      upvote(id);
+    }
   }
 
   function handleActiveClass(id) {
-    let found = upvotedItems.find((item) => item.id === id);
+    // let found = upvotedItems.find((item) => item.id === id);
+    let found = state.upvotedItems.find((item) => item.id === id);
     return found ? item.active : item.bg_light;
   }
 

@@ -1,3 +1,4 @@
+/* eslint-disable */
 function feedbackReducer(state, action) {
   switch (action.type) {
     case "ADD": {
@@ -26,9 +27,11 @@ function feedbackReducer(state, action) {
       };
     }
     case "UPVOTE": {
-      var { upvotedItems, feedbacks } = state;
+      var { feedbacks } = state;
+      var itemId;
       var updatedItems = feedbacks.map((item) => {
         if (action.payload === item.id) {
+          itemId = action.payload;
           return {
             ...item,
             upvotes: item.upvotes + 1,
@@ -39,6 +42,32 @@ function feedbackReducer(state, action) {
       return {
         ...state,
         feedbacks: updatedItems,
+        upvotedItems: [{ id: itemId }, ...state.upvotedItems],
+      };
+    }
+    case "UNVOTE": {
+      var { feedbacks, upvotedItems } = state;
+      var updatedUpvotedItems;
+      var updatedFeedbacks = feedbacks.map((item) => {
+        if (action.payload === item.id) {
+          var found = upvotedItems.find((item) => item.id === action.payload);
+
+          if (found) {
+            updatedUpvotedItems = upvotedItems.filter(
+              (item) => item.id !== found.id
+            );
+          }
+          return {
+            ...item,
+            upvotes: item.upvotes - 1,
+          };
+        }
+        return item;
+      });
+      return {
+        ...state,
+        feedbacks: updatedFeedbacks,
+        upvotedItems: updatedUpvotedItems,
       };
     }
     case "DELETE":
