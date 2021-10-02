@@ -1,71 +1,15 @@
-@import "../sass/components/label";
-
 .feedbacks__container {
-  margin-top: 1em;
+  margin-top: 0;
+  padding: 1em;
+
+  @media (min-width: 1025px) {
+    margin-top: 1em;
+    padding: 0;
+  }
+
   .feedbacks {
     display: flex;
     flex-direction: column;
     gap: 1em;
-
-    .feedback {
-      background-color: #fff;
-      border-radius: 0.625rem;
-      padding: 2em 1.5em;
-      &__row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        &__left {
-          display: flex;
-          gap: 2em;
-          align-items: flex-start;
-
-          .vote {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            background-color: #F2F4FF;
-            padding: 0.5em 0.7em;
-            border-radius: 0.625rem;
-
-            &:hover {
-              background-color: #CFD7FF;
-              cursor: pointer;
-            }
-
-            .arrow {
-              color: #4661E6;
-            }
-            .number {
-              font-size: 0.813rem;
-              color: #3A4374;
-            }
-          }
-          .solution {
-            h4 { color: #3A4374; font-size: 1.125rem; margin-bottom: 0.5em; }
-            p { color: #647196; margin-bottom: 0.8em; }
-            .label {
-              @extend %label;
-            }
-          }
-        }
-
-        &__right {
-          display: flex;
-          gap: 1em;
-          align-items: center;
-
-          .comment_icon { color: #CDD2EE; }
-          .comment_number {
-            h5 {
-              font-size: 1rem;
-              color: #3A4374;
-            }
-          }
-        }
-      }
-    }
   }
 }

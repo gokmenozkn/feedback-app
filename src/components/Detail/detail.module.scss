@@ -8,10 +8,13 @@ $radius: 0.25rem;
 $bordercolor: #4661E6;
 
 .container {
-  // @extend %container;
   max-width: 850px;
   margin: 0 auto;
-  padding: 1em 0;
+  padding: 1em;
+
+  @media (min-width: 1025px) {
+    padding: 1em 0;
+  }
 
   .grid {
     display: grid;

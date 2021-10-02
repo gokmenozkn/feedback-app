@@ -15,9 +15,14 @@
 
   .row {
     display: flex;
-    flex-direction: row;
-    gap: 1em;
+    flex-direction: column;
+    gap: 0;
     position: relative;
+
+    @media (min-width: 1025px) {
+      flex-direction: row;
+      gap: 1em;
+    }
 
     .main {
       flex: auto;

@@ -46,7 +46,6 @@ function FeedbackProvider({ children }) {
       type: "UPVOTE",
       payload: id,
     });
-    console.log(state.upvotedItems);
   }
 
   function unvote(id) {

@@ -1,5 +1,6 @@
 import roadmap from "./roadmap.module.scss";
 import { createUseStyles } from "react-jss";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
@@ -15,7 +16,7 @@ export const useHeaderStyles = createUseStyles({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    borderRadius: borderRadius,
+    borderRadius: 0,
     padding: ["1.3em", "1.5em"],
 
     "& .navbar__left": {
@@ -23,6 +24,11 @@ export const useHeaderStyles = createUseStyles({
         fontSize: 1.5 + "rem",
         marginTop: 0.2 + "em",
       },
+    },
+  },
+  "@media (min-width: 960px)": {
+    navbar: {
+      borderRadius: borderRadius,
     },
   },
   add_feedback: {
@@ -73,6 +79,8 @@ export function Header() {
 
 function Roadmap() {
   const { feedbacks } = useFeedbackContext();
+  const [status, setStatus] = useState("Planned");
+
   const plannedFeedbacks = feedbacks.filter(
     (item) => item.status === "planned"
   );
@@ -81,9 +89,43 @@ function Roadmap() {
   );
   const liveFeedbacks = feedbacks.filter((item) => item.status === "live");
 
+  const FILTER_MAP = {
+    Planned: (feedback) => feedback.status === "planned",
+    "In-Progress": (feedback) => feedback.status === "in-progress",
+    Live: (feedback) => feedback.status === "live",
+  };
+
+  const FILTER_NAMES = Object.keys(FILTER_MAP);
+
+  const Filters = () => {
+    return FILTER_NAMES.map((el) => {
+      if (el === status) {
+        return (
+          <div className={`${roadmap.filter} ${roadmap.active}`} key={el}>
+            {el}
+          </div>
+        );
+      }
+      return (
+        <div onClick={() => setStatus(el)} className={roadmap.filter} key={el}>
+          {el}
+        </div>
+      );
+    });
+  };
+
+  const ResponsiveCards = () => {
+    return feedbacks.filter(FILTER_MAP[status]).map((feedback) => {
+      return <Card {...feedback} key={feedback.id} />;
+    });
+  }
+
   return (
     <div className={roadmap.container}>
       <Header />
+      <div className={roadmap.filters}>
+        <Filters />
+      </div>
       <div className={roadmap.grid}>
         {/* Planned Feedbacks */}
         <div className={roadmap.col}>
@@ -124,6 +166,9 @@ function Roadmap() {
             })}
           </div>
         </div>
+      </div>
+      <div className={roadmap.responsive__cards}>
+        <ResponsiveCards />
       </div>
     </div>
   );

@@ -1,17 +1,29 @@
 .side {
-  max-width: 300px;
-  position: sticky;
-  top: 1em;
-  height: 100%;
-  display: grid;
-  grid-gap: 1em;
+  // max-width: 300px;
+  // height: 100%;
+  // display: grid;
+  // grid-gap: 1em;
+
+  @media (min-width: 1025px) {
+    max-width: 300px;
+    position: sticky;
+    top: 1em;
+    height: 100%;
+    display: grid;
+    grid-gap: 1em;
+  }
   
   &__header {
     &__brand {
-      padding: 4em 2em 1.3em 2em;
+      padding: 1.3em 1em;
       background: linear-gradient(270deg, rgba(232,77,112,1) 0%, rgba(163,55,246,1) 50%, rgba(40,167,237,1) 100%);
       color: #fff;
-      border-radius: 0.625rem;
+      border-radius: 0;
+
+      @media (min-width: 1025px) {
+        border-radius: 0.625rem;
+        padding: 4em 2em 1.3em 2em;
+      }
       
       h3 {
         font-size: 1.3rem;
@@ -26,6 +38,11 @@
   &__mid {
     border-radius: 0.625rem;
     background-color: #fff;
+    display: none;
+
+    @media (min-width: 1025px) {
+      display: block;
+    }
     
     &__labels {
       display: flex;
@@ -57,6 +74,11 @@
     padding: 2em;
     background-color: #fff;
     border-radius: 0.625rem;
+    display: none;
+
+    @media (min-width: 1025px) {
+      display: block;
+    }
 
     &__title {
       display: flex;

@@ -14,6 +14,11 @@ select > option {
 .form_container {
   max-width: 550px;
   margin: 0 auto;
+  padding: 1em;
+
+  @media (min-width: 960px) {
+    padding: 0;
+  }
   
   a {
     color: #3A4374;
@@ -110,14 +115,30 @@ select > option {
         cursor: pointer;
       }
       .right {
-        float: right;
+        float: unset;
+        display: flex;
+        flex-direction: column;
+
+        @media (min-width: 960px) {
+          float: right;
+          display: block;
+          flex-direction: unset;
+        }
+
         .cancel {
           background-color: $cancelbtn;
           &:hover { background-color: $cancel-btn-hover; }
         }
         .add {
           background-color: $add-btn;
-          margin-left: 1em;
+          margin-left: 0;
+          margin-top: 1em;
+
+          @media (min-width: 960px) {
+            margin-left: 1em;
+            margin-top: 0;
+          }
+
           &:hover { background-color: $add-btn-hover; }
         }
       }
