@@ -6,7 +6,7 @@ import { useFeedbackContext } from "../../context/FeedbackContext";
 function EditFeed() {
   const { id } = useParams();
   const history = useHistory();
-  const { feedbacks, updateFeedback } = useFeedbackContext();
+  const { feedbacks, updateFeedback, removeFeedback } = useFeedbackContext();
   const foundItem = feedbacks.find((el) => el.id === parseInt(id, 10));
 
   const [title, setTitle] = useState(foundItem.title || "");
@@ -23,24 +23,28 @@ function EditFeed() {
   function handleForm(e, id, title, category, status, detail) {
     e.preventDefault();
     updateFeedback(id, title, category, status, detail);
-    // updateFeedback(title, category, status, detail);
     history.push("/feedback/" + id);
   }
 
+  function remove(feedbackid) {
+    removeFeedback(feedbackid);
+    history.push("/");
+  }
+
   function handleTitle(e) {
-    setTitle(e.target.value)
+    setTitle(e.target.value);
   }
 
   function handleCategory(e) {
-    setCtgry(e.target.value)
+    setCtgry(e.target.value);
   }
 
   function handleStatus(e) {
-    setStatus(e.target.value)
+    setStatus(e.target.value);
   }
 
   function handleDetail(e) {
-    setDetail(e.target.value)
+    setDetail(e.target.value);
   }
 
   return (
@@ -50,8 +54,9 @@ function EditFeed() {
         Go Back
       </Link>
       <form
-        onSubmit={(e) => handleForm(e, parseInt(id, 10), title, ctgry, status, detail)}
-        // onSubmit={(e) => handleForm(e, title, ctgry, status, detail)}
+        onSubmit={(e) =>
+          handleForm(e, parseInt(id, 10), title, ctgry, status, detail)
+        }
         className={edit.form}
       >
         <img
@@ -140,11 +145,19 @@ function EditFeed() {
 
         <div className={edit.form__buttons}>
           <div className={edit.left}>
-            <button className={edit.delete}>Delete</button>
+            <button
+              type="button"
+              onClick={() => remove(parseInt(id, 10))}
+              className={edit.delete}
+            >
+              Delete
+            </button>
           </div>
           <div className={edit.right}>
             <button className={edit.cancel}>Cancel</button>
-            <button type="submit" className={edit.add}>Edit Feedback</button>
+            <button type="submit" className={edit.add}>
+              Edit Feedback
+            </button>
           </div>
         </div>
       </form>

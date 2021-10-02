@@ -2,10 +2,24 @@
 import { Link } from "react-router-dom";
 import side from "./side.module.scss";
 import { useFilterContext } from "../../context/FilterContext";
+import { useFeedbackContext } from "../../context/FeedbackContext";
 
 export default function Side() {
   const { activeElement, handleFilter } = useFilterContext();
+  const { feedbacks } = useFeedbackContext();
   const activeHandle = (name) => (activeElement === name ? side.active : ""); // set active class for labels
+
+  const planned = feedbacks.filter(
+    (feedback) => feedback.status === "planned"
+  ).length;
+
+  const inProgress = feedbacks.filter(
+    (feedback) => feedback.status === "in-progress"
+  ).length;
+
+  const live = feedbacks.filter(
+    (feedback) => feedback.status === "live"
+  ).length;
 
   function clickHandle(filterBy) {
     handleFilter(filterBy);
@@ -69,19 +83,19 @@ export default function Side() {
           <li className={side.planned}>
             <div>
               <p>Planned</p>
-              <h5>2</h5>
+              <h5>{planned}</h5>
             </div>
           </li>
           <li className={side.progress}>
             <div>
               <p>In-Progress</p>
-              <h5>3</h5>
+              <h5>{inProgress}</h5>
             </div>
           </li>
           <li className={side.live}>
             <div>
               <p>Live</p>
-              <h5>1</h5>
+              <h5>{live}</h5>
             </div>
           </li>
         </ul>

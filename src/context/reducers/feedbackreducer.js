@@ -71,7 +71,15 @@ function feedbackReducer(state, action) {
       };
     }
     case "DELETE":
-      break;
+      return {
+        ...state,
+        feedbacks: state.feedbacks.filter(
+          (feedback) => feedback.id !== action.payload
+        ),
+        upvotedItems: state.upvotedItems.filter(
+          (upvoted) => upvoted.id !== action.payload
+        ),
+      };
     default:
       break;
   }
