@@ -1,0 +1,9 @@
+@import "../sass/abstracts/variables";
+
+.comment_container {
+  background-color: #fff;
+  border-radius: 0.625rem;
+  padding: 2em 1.5em;
+
+  h4 { font-size: 1.125rem; color: $headerColor; }
+}

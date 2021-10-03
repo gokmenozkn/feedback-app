@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import detail from "./detail.module.scss";
 import FeedbackItem from "../FeedbackItem";
-import CommentItem from "../CommentItem";
+import CommentList from "../CommentList";
 import { useFeedbackContext } from "../../context/FeedbackContext";
 
 function Detail() {
@@ -24,11 +24,7 @@ function Detail() {
         <div className={detail.feedback}>
           <FeedbackItem data={found} />
         </div>
-        <div className={detail.comment_container}>
-          <h4>4 Comments</h4>
-          <CommentItem />
-          <CommentItem />
-        </div>
+        <CommentList found={found ? found : {}} />
         <div className={detail.add_comment}>
           <div className={detail.wrapper}>
             <h4>Add Comment</h4>
