@@ -156,7 +156,7 @@ function EditFeed() {
             type="text"
             className={edit.form__group__input}
             rows="4"
-            style={{ borderColor: isTitleEmpty ? "#D73737" : "" }}
+            style={{ borderColor: isDetailEmpty ? "#D73737" : "" }}
           />
           {isDetailEmpty ? <ErrorMessage /> : ""}
         </div>

@@ -136,7 +136,7 @@ function Roadmap() {
 
           <div className={roadmap.cards}>
             {plannedFeedbacks.map((item) => {
-              return <Card {...item} key={item.id} status="planned" />;
+              return <Card {...item} key={item.id} />;
             })}
           </div>
         </div>
@@ -149,7 +149,7 @@ function Roadmap() {
 
           <div className={roadmap.cards}>
             {inProgressFeedbacks.map((item) => {
-              return <Card {...item} key={item.id} status="in-progress" />;
+              return <Card {...item} key={item.id} />;
             })}
           </div>
         </div>
@@ -162,7 +162,7 @@ function Roadmap() {
 
           <div className={roadmap.cards}>
             {liveFeedbacks.map((item) => {
-              return <Card {...item} key={item.id} status="live" />;
+              return <Card {...item} key={item.id} />;
             })}
           </div>
         </div>

@@ -62,6 +62,28 @@ const useCardStyle = createUseStyles({
       },
     },
   },
+  card__title: {
+    "& h4": {
+      width: "fit-content",
+      cursor: "pointer",
+      "&:hover": {
+        color: "#4661E6",
+      },
+    }
+  },
+  link: {
+    width: "fit-content",
+    cursor: "pointer",
+    color: "#3A4374",
+    fontSize: 1.125 + "rem",
+    marginBottom: 0.5 + "em",
+    fontWeight: 700,
+    display: "block",
+    
+    "&:hover": {
+      color: "#4661E6",
+    },
+  },
   card__label: {
     extend: label,
     width: "fit-content",
@@ -81,8 +103,8 @@ const useCardStyle = createUseStyles({
     cursor: "pointer",
 
     "&:hover": {
-      backgroundColor: "#CFD7FF"
-    }
+      backgroundColor: "#CFD7FF",
+    },
   },
   card__bottom__qty: {
     display: "flex",

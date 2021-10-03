@@ -11,7 +11,7 @@ function FeedbackItem({ data }) {
     description = "",
     category = "",
     comments = [],
-    id = Number(),
+    id = Number,
     title = "",
   } = data;
   const changedCategory =
