@@ -5,15 +5,22 @@ import { useFilterContext } from "../../context/FilterContext";
 import Empty from "../Empty/empty";
 
 function Feedback() {
-  const { feedbacks } = useFeedbackContext();
+  const { feedbacks, DROPDOWN_MAP, sortName } = useFeedbackContext();
   const { filterBy } = useFilterContext();
 
-  const dataToShow =
-    filterBy === "all"
-      ? feedbacks.filter((item) => item.status === "suggestion")
-      : feedbacks.filter(
+  const dataToShow = (() => {
+    if (filterBy === "all") {
+      return [...feedbacks]
+        .sort(DROPDOWN_MAP[sortName])
+        .filter((item) => item.status === "suggestion");
+    } else {
+      return [...feedbacks]
+        .sort(DROPDOWN_MAP[sortName])
+        .filter(
           (item) => item.status === "suggestion" && item.category === filterBy
         );
+    }
+  })();
 
   const List = () => {
     if (dataToShow.length > 0) {
@@ -21,7 +28,7 @@ function Feedback() {
         return <FeedbackItem key={item.id} data={item} />;
       });
     } else {
-      return <Empty />
+      return <Empty />;
     }
   };
 

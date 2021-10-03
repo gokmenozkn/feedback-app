@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer, useState } from "react";
 import feedbackData from "../data/data.json";
 import feedbackReducer from "./reducers/feedbackreducer";
 
@@ -16,6 +16,24 @@ export const initialState = {
 
 function FeedbackProvider({ children }) {
   const [state, dispatch] = useReducer(feedbackReducer, initialState);
+  const [sortName, setSortName] = useState("Most Upvotes");
+
+  const DROPDOWN_MAP = {
+    "Most Upvotes": (a, b) => b.upvotes - a.upvotes,
+    "Least Upvotes": (a, b) => a.upvotes - b.upvotes,
+    "Most Comments": (a, b) => {
+      var aLen = a.comments.length;
+      var bLen = b.comments.length;
+      return bLen - aLen;
+    },
+    "Least Comments": (a, b) => {
+      var aLen = a.comments.length;
+      var bLen = b.comments.length;
+      return aLen - bLen;
+    },
+  };
+
+  const DROPDOWN_NAMES = Object.keys(DROPDOWN_MAP);
 
   function newFeedback(title, category, detail) {
     const { feedbacks } = state;
@@ -70,6 +88,10 @@ function FeedbackProvider({ children }) {
     upvote,
     unvote,
     removeFeedback,
+    DROPDOWN_MAP,
+    DROPDOWN_NAMES,
+    sortName,
+    setSortName,
   };
 
   return (
