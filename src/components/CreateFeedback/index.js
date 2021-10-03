@@ -2,11 +2,14 @@ import create from "./create.module.scss";
 import { Link, useHistory } from "react-router-dom";
 import { useState } from "react";
 import { useFeedbackContext } from "../../context/FeedbackContext";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 function CreateFeedback() {
   const [title, setTitle] = useState("");
   const [selected, setSelected] = useState("feature");
   const [area, setArea] = useState("");
+  const [isTitleEmpty, setIsTitleEmpty] = useState(false);
+  const [isDetailEmpty, setIsDetailEmpty] = useState(false);
   const { newFeedback } = useFeedbackContext();
   const history = useHistory();
 
@@ -27,8 +30,19 @@ function CreateFeedback() {
 
   function handleSubmit(e, title, category, detail) {
     e.preventDefault();
-    newFeedback(title, category, detail);
-    history.push("/");
+
+    if (!title) {
+      setIsTitleEmpty(true);
+    }
+
+    if (!detail) {
+      setIsDetailEmpty(true);
+    }
+
+    if (title && detail) {
+      newFeedback(title, category, detail);
+      history.push("/");
+    }
   }
 
   return (
@@ -56,8 +70,10 @@ function CreateFeedback() {
             defaultValue={title}
             onChange={handleChange}
             type="text"
-            className={create.form__group__input}
+            style={{ borderColor: isTitleEmpty ? "#D73737" : "" }}
+            className={`${create.form__group__input}`}
           />
+          {isTitleEmpty ? <ErrorMessage /> : ""}
         </div>
         <div className={create.form__group}>
           <label className={create.form__group__title}>
@@ -97,7 +113,9 @@ function CreateFeedback() {
             onChange={handleTextarea}
             className={create.form__group__input}
             rows="4"
+            style={{ borderColor: isDetailEmpty ? "#D73737" : "" }}
           />
+          {isDetailEmpty ? <ErrorMessage /> : ""}
         </div>
 
         <div className={create.form__buttons}>

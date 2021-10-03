@@ -1,18 +1,21 @@
 import { Link, useParams, useHistory } from "react-router-dom";
 import { useState } from "react";
-import edit from "./edit.module.scss";
 import { useFeedbackContext } from "../../context/FeedbackContext";
+import edit from "./edit.module.scss";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 function EditFeed() {
+  const { feedbacks, updateFeedback, removeFeedback } = useFeedbackContext();
   const { id } = useParams();
   const history = useHistory();
-  const { feedbacks, updateFeedback, removeFeedback } = useFeedbackContext();
   const foundItem = feedbacks.find((el) => el.id === parseInt(id, 10));
 
   const [title, setTitle] = useState(foundItem.title || "");
   const [ctgry, setCtgry] = useState(foundItem.category || "feature");
   const [status, setStatus] = useState(foundItem.status || "suggestion");
   const [detail, setDetail] = useState(foundItem.description || "");
+  const [isTitleEmpty, setIsTitleEmpty] = useState(false);
+  const [isDetailEmpty, setIsDetailEmpty] = useState(false);
 
   const formTitle = foundItem ? (
     <h2 className={edit.form__title}>Editing ‘{foundItem.title}’</h2>
@@ -22,8 +25,19 @@ function EditFeed() {
 
   function handleForm(e, id, title, category, status, detail) {
     e.preventDefault();
-    updateFeedback(id, title, category, status, detail);
-    history.push("/feedback/" + id);
+
+    if (!title) {
+      setIsTitleEmpty(true);
+    }
+
+    if (!detail) {
+      setIsDetailEmpty(true);
+    }
+
+    if (title && detail) {
+      updateFeedback(id, title, category, status, detail);
+      history.push("/feedback/" + id);
+    }
   }
 
   function remove(feedbackid) {
@@ -75,7 +89,9 @@ function EditFeed() {
             onChange={handleTitle}
             type="text"
             className={edit.form__group__input}
+            style={{ borderColor: isTitleEmpty ? "#D73737" : "" }}
           />
+          {isTitleEmpty ? <ErrorMessage /> : ""}
         </div>
         <div className={edit.form__group}>
           <label className={edit.form__group__title}>
@@ -140,7 +156,9 @@ function EditFeed() {
             type="text"
             className={edit.form__group__input}
             rows="4"
+            style={{ borderColor: isTitleEmpty ? "#D73737" : "" }}
           />
+          {isDetailEmpty ? <ErrorMessage /> : ""}
         </div>
 
         <div className={edit.form__buttons}>
