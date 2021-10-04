@@ -1,0 +1,74 @@
+@import "../sass/abstracts/variables";
+
+$primary: #F7F8FD;
+$radius: 0.25rem;
+$bordercolor: #4661E6;
+
+.add_comment {
+  background-color: #fff;
+  border-radius: 0.625rem;
+  padding: 2em 1.5em;
+  
+  .wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    
+    h4 { color: $headerColor; font-size: 1.125rem; }
+    .textarea {
+      width: 100%;
+      textarea {
+        appearance: none;
+        resize: none;
+      }
+    }
+
+    &__bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      button {
+        color: #fff;
+        padding: 0.9em 1.8em;
+        font-weight: 700;
+        border-radius: 0.625rem;
+        font-size: 0.875rem;
+        border: none;
+        background-color: $purple;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $purpleHover;
+        }
+      }
+
+      span {
+        color: #647196;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+.input {
+  width: 100%;
+  border: 2px solid $primary;
+  border-radius: $radius;
+  background-color: $primary;
+  padding: 1em;
+  appearance: none;
+  transition: border 0.3s ease;
+
+  &:focus {
+    border-color: $bordercolor;
+    border-width: 2px;
+    outline: none;
+  }
+
+  &::placeholder {
+    font-weight: 500;
+    color: #8C92B3;
+  }
+}

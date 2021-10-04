@@ -1,9 +1,4 @@
 .side {
-  // max-width: 300px;
-  // height: 100%;
-  // display: grid;
-  // grid-gap: 1em;
-
   @media (min-width: 1025px) {
     max-width: 300px;
     position: sticky;
@@ -14,6 +9,8 @@
   }
   
   &__header {
+    position: relative;
+
     &__brand {
       padding: 1.3em 1em;
       background: linear-gradient(270deg, rgba(232,77,112,1) 0%, rgba(163,55,246,1) 50%, rgba(40,167,237,1) 100%);
@@ -31,6 +28,17 @@
       h6 {
         font-weight: 200;
         font-size: 1rem;
+      }
+    }
+
+    &__hamburger {
+      display: block;
+      position: absolute;
+      top: calc(50% - 1em);
+      right: 1em;
+
+      @media (min-width: 1025px) {
+        display: none;
       }
     }
   }

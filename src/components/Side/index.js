@@ -32,6 +32,9 @@ export default function Side() {
           <h3>Frontend Mentor</h3>
           <h6>Feedback Board</h6>
         </div>
+        <div className={side.side__header__hamburger}>
+          <img src="/assets/shared/mobile/icon-hamburger.svg" alt="" />
+        </div>
       </div>
       <div className={side.side__mid}>
         <div className={side.side__mid__labels}>

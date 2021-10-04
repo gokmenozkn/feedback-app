@@ -3,7 +3,6 @@
 .item {
   display: flex;
   gap: 2em;
-  border-bottom: 1px solid #e4e7f4;
   padding: 2em 0;
 
   &__hero {
@@ -34,7 +33,15 @@
         }
       }
     }
+
+    &__body {
+      max-width: 100%;
+    }
   }
+}
+
+.item + .item {
+  border-top: 1px solid rgba(140, 146, 179, .25);
 }
 
 .username {

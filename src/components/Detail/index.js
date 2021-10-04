@@ -1,8 +1,9 @@
 import { Link, useParams } from "react-router-dom";
+import { useFeedbackContext } from "../../context/FeedbackContext";
 import detail from "./detail.module.scss";
 import FeedbackItem from "../FeedbackItem";
 import CommentList from "../CommentList";
-import { useFeedbackContext } from "../../context/FeedbackContext";
+import AddComment from "../AddComment/AddComment";
 
 function Detail() {
   const { id } = useParams();
@@ -25,27 +26,7 @@ function Detail() {
           <FeedbackItem data={found} />
         </div>
         <CommentList found={found ? found : {}} />
-        <div className={detail.add_comment}>
-          <div className={detail.wrapper}>
-            <h4>Add Comment</h4>
-            <div className={detail.textarea}>
-              <textarea
-                placeholder="Type your comment here"
-                type="text"
-                className={detail.input}
-                rows="4"
-              />
-            </div>
-            <div className={detail.wrapper__bottom}>
-              <div>
-                <span>250 Characters left</span>
-              </div>
-              <div className={detail.post_btn}>
-                <button>Post Comment</button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <AddComment found={found} />
       </div>
     </div>
   );

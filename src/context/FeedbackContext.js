@@ -8,6 +8,7 @@ export const useFeedbackContext = () => useContext(FeedbackContext);
 
 // Initial state
 export const initialState = {
+  currentUser: feedbackData.currentUser,
   feedbacks: feedbackData.productRequests,
   upvotedItems: [],
   filterName: "all",
@@ -80,6 +81,13 @@ function FeedbackProvider({ children }) {
     });
   }
 
+  function addComment(id, content) {
+    dispatch({
+      type: "COMMENT",
+      payload: { id, content },
+    });
+  }
+
   const value = {
     state,
     feedbacks: state.feedbacks,
@@ -92,6 +100,7 @@ function FeedbackProvider({ children }) {
     DROPDOWN_NAMES,
     sortName,
     setSortName,
+    addComment,
   };
 
   return (

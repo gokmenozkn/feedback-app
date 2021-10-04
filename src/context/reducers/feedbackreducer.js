@@ -1,4 +1,6 @@
 /* eslint-disable */
+import { v4 as uuidv4 } from "uuid";
+
 function feedbackReducer(state, action) {
   switch (action.type) {
     case "ADD": {
@@ -50,13 +52,9 @@ function feedbackReducer(state, action) {
       var updatedUpvotedItems;
       var updatedFeedbacks = feedbacks.map((item) => {
         if (action.payload === item.id) {
-          var found = upvotedItems.find((item) => item.id === action.payload);
-
-          if (found) {
-            updatedUpvotedItems = upvotedItems.filter(
-              (item) => item.id !== found.id
-            );
-          }
+          updatedUpvotedItems = upvotedItems.filter(
+            (item) => item.id !== action.payload
+          );
           return {
             ...item,
             upvotes: item.upvotes - 1,
@@ -80,6 +78,30 @@ function feedbackReducer(state, action) {
           (upvoted) => upvoted.id !== action.payload
         ),
       };
+    case "COMMENT": {
+      var { content, id } = action.payload;
+      var currentUser = state.currentUser;
+      var x = state.feedbacks.map((feedback) => {
+        if (id === feedback.id) {
+          return {
+            ...feedback,
+            comments: [
+              {
+                id: uuidv4(),
+                content,
+                user: currentUser,
+              },
+              ...feedback.comments,
+            ],
+          };
+        }
+        return feedback;
+      });
+      return {
+        ...state,
+        feedbacks: x,
+      };
+    }
     default:
       break;
   }
