@@ -7,6 +7,7 @@ import FeedbackDetail from "./pages/Feedbackdetail";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
+  document.title = "Feedback Board";
   return (
     <Router>
       <Switch>

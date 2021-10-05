@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import empty from "./empty.module.scss";
+import CreateFeedbackButton from "./../CreateFeedbackButton"
 
 function Empty() {
   return (
@@ -11,7 +11,7 @@ function Empty() {
           Got a suggestion? Found a bug that needs to be squashed?<br/> We love
           hearing about new ideas to improve our app.
         </p>
-        <Link to={"/new-feedback"}>+ Add Feedback</Link>
+        <CreateFeedbackButton />
       </div>
     </div>
   );

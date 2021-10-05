@@ -1,10 +1,10 @@
 /* eslint-disable */
 import navbar from "./navbar.module.scss";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { useFeedbackContext } from "../../context/FeedbackContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import CreateFeedbackButton from "../CreateFeedbackButton";
 
 const Navbar = () => {
   const {
@@ -73,9 +73,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className={navbar.navbar__right}>
-        <Link className={navbar.add_feedback} to="/new-feedback">
-          + Add Feedback
-        </Link>
+        <CreateFeedbackButton />
       </div>
     </nav>
   );

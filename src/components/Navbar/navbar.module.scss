@@ -7,10 +7,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: .8rem;
 
   @media (min-width: 1025px) {
     border-radius: 0.625rem;
     padding: 1.3em 1.5em;
+    font-size: 1rem;
   }
 
   &__left {
@@ -61,7 +63,6 @@
 
 .dropdown {
   position: absolute;
-  // bottom: 0;
   top: calc(100% + 1.5em);
   color: #647196;
   background-color: #fff;

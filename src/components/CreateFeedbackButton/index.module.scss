@@ -1,0 +1,15 @@
+.add_feedback {
+  background-color: #AD1FEA;
+  color: #fff;
+  border-radius: 0.625rem;
+  padding: .5em 1.3em;
+  font-weight: 500;
+
+  @media (min-width: 1025px) {
+    padding: .7em 1.5em;
+  }
+  
+  &:hover {
+    background-color: #C75AF6;
+  }
+}

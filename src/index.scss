@@ -14,4 +14,5 @@ $body-color: #F7F8FD;
 body {
   font-family: $jost;
   background-color: $body-color;
+  overflow-x: hidden;
 }
