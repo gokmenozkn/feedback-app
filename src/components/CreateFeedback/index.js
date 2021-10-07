@@ -28,6 +28,10 @@ function CreateFeedback() {
     setArea(value);
   }
 
+  function handleCancel(e) {
+    history.push("/");
+  }
+
   function handleSubmit(e, title, category, detail) {
     e.preventDefault();
 
@@ -120,7 +124,9 @@ function CreateFeedback() {
 
         <div className={create.form__buttons}>
           <div className={create.right}>
-            <button className={create.cancel}>Cancel</button>
+            <button onClick={handleCancel} className={create.cancel}>
+              Cancel
+            </button>
             <button type="submit" className={create.add}>
               Add Feedback
             </button>
